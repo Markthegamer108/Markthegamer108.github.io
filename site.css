@@ -190,6 +190,22 @@ select{
 }
 .rail b{display:block;color:var(--accent);font-weight:500;margin-bottom:6px}
 
+.repo-meta{
+  display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;
+  margin:-4px 0 0;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--muted-2);
+}
+.repo-meta span{display:inline-flex;align-items:center;gap:6px}
+.repo-meta b{font-weight:500;color:var(--muted)}
+.repo-vis{border:1px solid var(--line);border-radius:999px;padding:2px 8px;letter-spacing:.08em;color:var(--muted)}
+.repo-vis.pub{color:#7ee787;border-color:rgba(126,231,135,.28)}
+.repo-vis.priv{color:#ffc247;border-color:rgba(255,194,71,.24)}
+.lang{width:8px;height:8px;border-radius:50%;background:var(--lang,#8a8882);display:inline-block}
+.sec .read-note{
+  margin:14px 0 0;padding:10px 13px;border:1px solid rgba(255,194,71,.22);border-radius:4px;
+  background:rgba(255,194,71,.05);font-size:13.4px;color:#e6dbc2;
+}
+
 .sec h2{margin-bottom:18px}
 .sec h2+p{max-width:60ch}
 .sec p{color:var(--muted);text-wrap:pretty}

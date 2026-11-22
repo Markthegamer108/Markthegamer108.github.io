@@ -3,12 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Markthegamer108: Shroombrew, WiiWave, RAVage</title>
-<meta name="description" content="Three hobby projects: a homebrew shop for the Wii, a Mario Kart Wii revival server, and a browser tool for tiptoi pens.">
+<title>Markthegamer108: Shroombrew, WiiWave, RAVage, RaspberrySoft Dev and Nexarch</title>
+<meta name="description" content="Five hobby projects: a Wii Shop revival, a Nintendo WFC revival, a tiptoi audio converter, Windows drivers for the Raspberry Pi 5, and a chess engine.">
 <meta name="theme-color" content="#0a0a0b">
 <meta name="color-scheme" content="dark">
 <meta name="google-site-verification" content="6Ea1DqhIRltL9ntr0jAxRYeOnjuvdR1SQRA4jJZ0wN4">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230a0a0b'/%3E%3Cpath d='M7 24V8h3.2l5.8 9.2L21.800 8H25v16h-3V13.400l-5.200 8.200h-1.600L10 13.400V24H7z' fill='%23ff6a3d'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://shop.shroombrew.org" crossorigin>
+<link rel="preconnect" href="https://api.github.com" crossorigin>
 <link rel="stylesheet" href="/site.css">
 </head>
 <body>
@@ -27,16 +29,24 @@
 <main id="top">
   <section class="wrap hero">
     <h1>Multiple things I<br>built, <em>one</em> page for it all.</h1>
-    <p class="lede">Regardless of whether you're searching for a chess engine, a Wii Shop Channel, Wii WFC revivals or even underrated kids' toys like the tiptoi pen, it's all here.</p>
+    <p class="lede">Regardless of whether you're searching for a chess engine, a Wii Shop Channel, Wii WFC revivals, a raspberry pi windows port or even underrated kids' toys like the tiptoi pen, it's all here.</p>
   </section>
 
-  <section class="wrap sec">
+  <section class="wrap sec" id="shroombrew">
     <div class="rail"><b>01</b>Wii</div>
     <div>
       <h2>Shroombrew</h2>
       <p>Shroombrew is a fan-made revival of the Wii Shop Channel. The patched channel talks to Shroombrew's own server instead of Nintendo's, so a real Wii can browse the catalog and install titles again. The catalog has official WiiWare and Virtual Console games, homebrew and Flash games. Wii Points cards are made on the site, and there are community pages for friend codes, gifts and points history.</p>
+      <div class="repo-meta" data-repo="shroombrew">
+        <span class="repo-vis pub">Public</span>
+        <span><i class="lang" style="--lang:#00add8"></i>Go</span>
+        <span data-gh="license">AGPL-3.0</span>
+        <span>★ <b data-gh="stars">0</b></span>
+        <span>Updated <b data-gh="updated">15 Nov 2026</b></span>
+      </div>
       <dl class="spec-list">
         <div><dt>Built with</dt><dd>Go, PostgreSQL, a C forwarder for devkitPPC</dd></div>
+        <div><dt>Version</dt><dd>No tagged release yet; <code>main</code> is the current build (15 Nov 2026).</dd></div>
         <div><dt>Status</dt><dd>Live. Built for the original Wii; vWii on Wii U is untested.</dd></div>
         <div><dt>Server status</dt><dd><a class="status-pill" id="shroombrew-status" href="https://shroombrew.org/status.html" aria-live="polite"><i></i><span id="shroombrew-status-text">checking</span></a><span class="status-meta" id="shroombrew-status-meta"></span></dd></div>
         <div><dt>Preview</dt><dd><a href="https://shop.shroombrew.org/">shop.shroombrew.org</a> — a preview of the new shop frontend</dd></div>
@@ -46,31 +56,92 @@
     </div>
   </section>
 
-  <section class="wrap sec">
-    <div class="rail"><b>02</b>Mario Kart Wii</div>
+  <section class="wrap sec" id="wiiwave">
+    <div class="rail"><b>02</b>Nintendo WFC</div>
     <div>
       <h2>WiiWave</h2>
-      <p>A community server for Mario Kart Wii's Nintendo WFC. It runs ranked races, a weekly league, seasons and rotating events, and its page shows the standings.</p>
+      <p>WiiWave is a community revival for Nintendo WFC. It rewrites a disc image so the game talks to its own server instead of Nintendo's. Wii Chess is supported, Super Smash Bros. Brawl's patch is in testing, and Mario Kart Wii is next. The repo also has the weekly league, seasons and the server tooling behind them.</p>
+      <div class="repo-meta" data-repo="WiiWave">
+        <span class="repo-vis priv">Private</span>
+        <span><i class="lang" style="--lang:#3572a5"></i>Python</span>
+        <span>No license yet</span>
+        <span>Updated 28 Oct 2026</span>
+      </div>
       <dl class="spec-list">
-        <div><dt>Built with</dt><dd>Python, SQLite</dd></div>
+        <div><dt>Built with</dt><dd>Python, SQLite, C for the Wii side</dd></div>
+        <div><dt>Status</dt><dd>Unfinished and actively developed. Wii Chess works; Brawl and Mario Kart Wii are still being tested.</dd></div>
         <div><dt>Needs</dt><dd>A patched copy of a disc you own</dd></div>
         <div><dt>Source</dt><dd>Private for now</dd></div>
       </dl>
-      <div class="acts"><a class="btn btn--solid" href="/wiiwave/">Open WiiWave</a></div>
+      <div class="acts"><a class="btn btn--solid" href="/wiiwave/">Open WiiWave</a><button class="btn" type="button" id="wiiwave-read" aria-controls="wiiwave-read-note" aria-expanded="false">Read about it</button></div>
+      <p class="read-note" id="wiiwave-read-note" hidden>Nothing to see here! check back later!</p>
     </div>
   </section>
 
-  <section class="wrap sec">
+  <section class="wrap sec" id="ravage">
     <div class="rail"><b>03</b>tiptoi</div>
     <div>
       <h2>RAVage</h2>
       <p>Converts mp3, wav, m4a or flac into the <code>.rav</code> files a Ravensburger tiptoi pen plays, and decrypts stock ones back to ogg. The converter runs in the browser, so nothing is uploaded. There are desktop builds too.</p>
+      <div class="repo-meta" data-repo="RAVage">
+        <span class="repo-vis pub">Public</span>
+        <span><i class="lang" style="--lang:#3572a5"></i>Python</span>
+        <span data-gh="license">MIT</span>
+        <span>★ <b data-gh="stars">4</b></span>
+        <span>Forks <b data-gh="forks">2</b></span>
+        <span>Updated <b data-gh="updated">4 Nov 2026</b></span>
+      </div>
       <dl class="spec-list">
         <div><dt>Built with</dt><dd>Python, JavaScript, WebAssembly</dd></div>
+        <div><dt>Version</dt><dd>v0.1.2, the latest release (26 Aug 2026)</dd></div>
+        <div><dt>Status</dt><dd>Working. The desktop builds have been tested on a 3203L; the browser encoder still needs a physical pen test.</dd></div>
         <div><dt>Tested on</dt><dd>A 3203L pen</dd></div>
-        <div><dt>Source</dt><dd><a href="https://github.com/Markthegamer108/RAVage">Markthegamer108/RAVage</a>, MIT licensed</dd></div>
+        <div><dt>Source</dt><dd><a href="https://github.com/Markthegamer108/RAVage">Markthegamer108/RAVage</a></dd></div>
       </dl>
-      <div class="acts"><a class="btn btn--solid" href="/ravage/">Open RAVage</a><a class="btn" href="https://github.com/Markthegamer108/RAVage/releases">Downloads</a></div>
+      <div class="acts"><a class="btn btn--solid" href="/ravage/">Open RAVage</a></div>
+    </div>
+  </section>
+
+  <section class="wrap sec" id="raspberrysoft">
+    <div class="rail"><b>04</b>Raspberry Pi</div>
+    <div>
+      <h2>RaspberrySoft Dev</h2>
+      <p>Windows on a Raspberry Pi 5, built around the RP1 southbridge. It's a fleet of 20 KMDF drivers for the RP1 peripherals plus an imager that puts Windows 11 ARM64 on an SD card. The repo is private for now and slowly getting developed.</p>
+      <div class="repo-meta" data-repo="raspberrysoft-dev">
+        <span class="repo-vis priv">Private</span>
+        <span><i class="lang" style="--lang:#555555"></i>C</span>
+        <span>MIT</span>
+        <span>Updated 10 Nov 2026</span>
+      </div>
+      <dl class="spec-list">
+        <div><dt>Built with</dt><dd>C, KMDF/WDF, ACPI, Avalonia</dd></div>
+        <div><dt>Status</dt><dd>Under construction. The drivers build in CI and hardware bring-up is in progress.</dd></div>
+        <div><dt>License</dt><dd>MIT</dd></div>
+        <div><dt>Source</dt><dd>Private for now</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="wrap sec" id="nexarch">
+    <div class="rail"><b>05</b>Chess</div>
+    <div>
+      <h2>Nexarch</h2>
+      <p>Nexarch is a chess engine built from scratch. It's alpha-beta with an NNUE evaluation, magic bitboards and the usual search tricks, trained by self-play and graded by the top engines. The goal is to beat Stockfish 19. It's not there yet, but Gen 3 is +300 Elo over Gen 2 and Gen 4 is training now.</p>
+      <div class="repo-meta" data-repo="nexarch">
+        <span class="repo-vis pub">Public</span>
+        <span><i class="lang" style="--lang:#3572a5"></i>Python</span>
+        <span>C++20</span>
+        <span data-gh="license">MIT</span>
+        <span>★ <b data-gh="stars">0</b></span>
+        <span>Updated <b data-gh="updated">22 Nov 2026</b></span>
+      </div>
+      <dl class="spec-list">
+        <div><dt>Built with</dt><dd>C++20, Python, NNUE</dd></div>
+        <div><dt>Status</dt><dd>In development. Gen 3 is the current network; Gen 4 is training.</dd></div>
+        <div><dt>License</dt><dd>MIT, except one grading helper which is GPL-3.0</dd></div>
+        <div><dt>Source</dt><dd><a href="https://github.com/Markthegamer108/nexarch">Markthegamer108/nexarch</a></dd></div>
+      </dl>
+      <div class="acts"><a class="btn btn--solid" href="https://github.com/Markthegamer108/nexarch">Open on GitHub</a><a class="btn" href="https://github.com/Markthegamer108/nexarch#readme">Read the README</a></div>
     </div>
   </section>
 </main>
@@ -79,18 +150,19 @@
     <div class="footer__in">
       <div class="footer__brand">
         <a class="brand" href="/"><span class="brand__mark">M</span> Markthegamer108</a>
-        <p>Shroombrew, WiiWave and RAVage. Independent hobby projects.</p>
+        <p>Shroombrew, WiiWave, RAVage, RaspberrySoft Dev and Nexarch. Independent hobby projects.</p>
       </div>
       <div class="footer__cols">
         <div class="footer__col"><h3>Projects</h3>
-          <a href="/shroombrew-info/">Shroombrew</a><a href="/wiiwave/">WiiWave</a><a href="/ravage/">RAVage</a></div>
+          <a href="/shroombrew-info/">Shroombrew</a><a href="/wiiwave/">WiiWave</a><a href="/ravage/">RAVage</a><a href="/#raspberrysoft">RaspberrySoft Dev</a><a href="/#nexarch">Nexarch</a></div>
         <div class="footer__col"><h3>Source</h3>
           <a href="https://github.com/Markthegamer108/shroombrew">Shroombrew</a>
           <a href="https://github.com/Markthegamer108/RAVage">RAVage</a>
+          <a href="https://github.com/Markthegamer108/nexarch">Nexarch</a>
           <a href="https://github.com/Markthegamer108">All repositories</a></div>
       </div>
     </div>
-    <p class="footer__legal">Not affiliated with, endorsed by or connected to Nintendo or Ravensburger. Wii, Mario Kart Wii, Nintendo WFC, tiptoi and Ravensburger belong to their owners.</p>
+    <p class="footer__legal">Not affiliated with, endorsed by or connected to Nintendo, Ravensburger, Raspberry Pi or Microsoft. Wii, Mario Kart Wii, Nintendo WFC, tiptoi, Ravensburger, Raspberry Pi and Windows belong to their owners.</p>
   </div>
 </footer>
 <script>
@@ -129,6 +201,42 @@
   check();
   setInterval(function () { if (!document.hidden) check(); }, 10000);
   document.addEventListener('visibilitychange', function () { if (!document.hidden) check(); });
+})();
+</script>
+<script>
+(function () {
+  var read = document.getElementById('wiiwave-read');
+  var note = document.getElementById('wiiwave-read-note');
+  if (!read || !note) return;
+  read.addEventListener('click', function () {
+    var open = note.hidden;
+    note.hidden = !open;
+    read.setAttribute('aria-expanded', String(open));
+  });
+})();
+</script>
+<script>
+(function () {
+  var repos = ['shroombrew', 'RAVage', 'nexarch'];
+  repos.forEach(function (repo) {
+    var root = document.querySelector('[data-repo="' + repo + '"]');
+    if (!root) return;
+    fetch('https://api.github.com/repos/Markthegamer108/' + repo, {
+      headers: { Accept: 'application/vnd.github+json' }
+    }).then(function (res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return res.json();
+    }).then(function (data) {
+      function set(name, value) {
+        var el = root.querySelector('[data-gh="' + name + '"]');
+        if (el && value != null) el.textContent = value;
+      }
+      set('stars', data.stargazers_count);
+      set('forks', data.forks_count);
+      set('license', data.license && data.license.spdx_id);
+      set('updated', new Date(data.pushed_at).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' }));
+    }).catch(function () {});
+  });
 })();
 </script>
 </body>

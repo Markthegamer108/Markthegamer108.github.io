@@ -3,11 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>WiiWave: Mario Kart Wii, online again</title>
-<meta name="description" content="A community server for Mario Kart Wii's Nintendo WFC. Weekly leagues, seasons and events, with live standings.">
+<title>WiiWave: Nintendo WFC, back online</title>
+<meta name="description" content="A community server for Nintendo WFC. Wii Chess is supported, Brawl's patch is in testing, and Mario Kart Wii is next. Weekly league, seasons and events are in the repo.">
 <meta name="theme-color" content="#0a0a0b">
 <meta name="color-scheme" content="dark">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230a0a0b'/%3E%3Cpath d='M7 24V8h3.2l5.8 9.2L21.800 8H25v16h-3V13.400l-5.200 8.200h-1.600L10 13.400V24H7z' fill='%23ff6a3d'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://r.jina.ai" crossorigin>
 <link rel="stylesheet" href="/site.css">
 </head>
 <body>
@@ -25,55 +26,64 @@
 
 <main id="top">
   <section class="wrap hero">
-    <h1>Mario Kart Wii,<br>back <em>online</em>.</h1>
-    <p class="lede">WiiWave keeps Nintendo WFC going for Mario Kart Wii: ranked races, a weekly league, seasons and events. Players run it for players.</p>
+    <h1>Nintendo WFC,<br>back <em>online</em>.</h1>
+    <p class="lede">WiiWave is a community revival for Nintendo WFC. It rewrites a disc image so the game talks to its own server instead of Nintendo's. Wii Chess is supported, Super Smash Bros. Brawl's patch is in testing, and Mario Kart Wii is next.</p>
     <div class="hero__note"><span><i></i>Patched disc needed</span><span><i></i>European WFC</span><span class="status-pill" id="status-pill"><i></i><span id="status-text">checking</span></span></div>
-    <p class="hero-meta lede" id="hero-meta" style="margin-top:18px;font-size:.95rem">Contacting the server.</p>
   </section>
 
   <section class="wrap sec" id="status">
     <div class="rail"><b>01</b>Status</div>
     <div>
-      <div class="bar"><h2 style="margin:0">This week</h2><span class="stamp" id="updated"></span></div>
+      <h2>Server status</h2>
+      <p>The WFC server is checked every 60 seconds. It doesn't publish a status API yet, so uptime and CPU are marked as not exposed instead of guessed.</p>
       <div class="stats">
-        <div class="stat" id="card-week"><span class="stat__label">League week</span><span class="stat__value" data-value>&ndash;</span><span class="stat__sub" data-sub>waiting for data</span></div>
-        <div class="stat" id="card-season"><span class="stat__label">Season</span><span class="stat__value" data-value>&ndash;</span><span class="stat__sub" data-sub>waiting for data</span></div>
-        <div class="stat" id="card-event"><span class="stat__label">Event of the week</span><span class="stat__value" data-value>&ndash;</span><span class="stat__sub" data-sub>waiting for data</span></div>
-        <div class="stat" id="card-stage"><span class="stat__label">Championship</span><span class="stat__value" data-value>&ndash;</span><span class="stat__sub" data-sub>waiting for data</span></div>
+        <div class="stat">
+          <span class="stat__label">Server</span>
+          <span class="stat__value"><span class="status-pill" id="srv-state"><i></i><span id="srv-state-text">checking</span></span></span>
+          <span class="stat__sub" id="srv-sub">contacting the server</span>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Software</span>
+          <span class="stat__value" id="srv-software">WiiWave WFC</span>
+          <span class="stat__sub" id="srv-version">waiting for the manifest</span>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Uptime</span>
+          <span class="stat__value">&mdash;</span>
+          <span class="stat__sub">not exposed yet</span>
+        </div>
+        <div class="stat">
+          <span class="stat__label">CPU</span>
+          <span class="stat__value">&mdash;</span>
+          <span class="stat__sub">not exposed yet</span>
+        </div>
       </div>
+      <p class="note-line" id="status-note">Season files: <span id="srv-seasons">checking</span> &middot; Last check: <span id="srv-checked">&mdash;</span></p>
+      <div class="acts"><button class="btn" type="button" id="check-now">Check now</button></div>
     </div>
   </section>
 
   <section class="wrap sec" id="standings">
     <div class="rail"><b>02</b>Standings</div>
     <div>
-      <div class="bar"><div class="tabs" role="tablist"><button class="tab active" data-tab="week" role="tab">Week</button><button class="tab" data-tab="stage" role="tab">Stage</button><button class="tab" data-tab="championship" role="tab">Championship</button></div>
-        <button class="btn" id="refresh-standings">Refresh</button></div>
-      <p class="note-line" id="standings-note" style="font-size:13px;color:var(--muted-2)">Loading.</p>
-      <table class="tbl standings"><thead><tr><th>#</th><th>Player</th><th>Score</th><th>Races</th></tr></thead><tbody id="standings-body"></tbody></table>
-      <div class="pager"><button class="btn" id="prev-page">&laquo; Prev</button><span id="page-info"></span><button class="btn" id="next-page">Next &raquo;</button></div>
+      <h2>Unfinished, coming soon!</h2>
+      <p>The weekly, stage and championship tables are still being built.</p>
     </div>
   </section>
 
   <section class="wrap sec" id="player">
     <div class="rail"><b>03</b>Player</div>
     <div>
-      <h2>Look up a player</h2>
-      <p>Only a full 12-digit friend code shows a player's own ranks. Everyone else is masked to the last four digits in the tables.</p>
-      <form id="player-form" class="player-form"><input id="player-code" inputmode="numeric" autocomplete="off" spellcheck="false" placeholder="1234-5678-9012" maxlength="14"><button class="btn btn--solid" type="submit">Search</button></form>
-      <div id="player-result" class="player-result hidden"></div>
+      <h2>Unfinished, coming soon!</h2>
+      <p>The friend-code lookup is still being built.</p>
     </div>
   </section>
 
   <section class="wrap sec" id="howto">
     <div class="rail"><b>04</b>How to play</div>
     <div>
-      <h2>Getting on</h2>
-      <ol class="steps">
-        <li><h3>Patch your disc</h3><p>Use a Mario Kart Wii disc you own and the WiiWave patcher (<code>wiiwave.py</code>). It rewrites the Nintendo WFC addresses so the game talks to this server.</p></li>
-        <li><h3>Connect</h3><p>On the Wii, open Mario Kart Wii and choose Nintendo WFC. The patched game finds the server by itself, so there is no DNS or proxy to set up.</p></li>
-        <li><h3>Race</h3><p>Every ranked race is reported to the league. The weekly, stage and championship tables on this page update every minute.</p></li>
-      </ol>
+      <h2>Unfinished, coming soon!</h2>
+      <p>The setup guide is still being built.</p>
     </div>
   </section>
 </main>
@@ -82,21 +92,90 @@
     <div class="footer__in">
       <div class="footer__brand">
         <a class="brand" href="/"><span class="brand__mark">M</span> Markthegamer108</a>
-        <p>Shroombrew, WiiWave and RAVage. Independent hobby projects.</p>
+        <p>Shroombrew, WiiWave, RAVage, RaspberrySoft Dev and Nexarch. Independent hobby projects.</p>
       </div>
       <div class="footer__cols">
         <div class="footer__col"><h3>Projects</h3>
-          <a href="/shroombrew-info/">Shroombrew</a><a href="/wiiwave/">WiiWave</a><a href="/ravage/">RAVage</a></div>
+          <a href="/shroombrew-info/">Shroombrew</a><a href="/wiiwave/">WiiWave</a><a href="/ravage/">RAVage</a><a href="/#raspberrysoft">RaspberrySoft Dev</a><a href="/#nexarch">Nexarch</a></div>
         <div class="footer__col"><h3>Source</h3>
           <a href="https://github.com/Markthegamer108/shroombrew">Shroombrew</a>
           <a href="https://github.com/Markthegamer108/RAVage">RAVage</a>
+          <a href="https://github.com/Markthegamer108/nexarch">Nexarch</a>
           <a href="https://github.com/Markthegamer108">All repositories</a></div>
       </div>
     </div>
-    <p class="footer__legal">Not affiliated with, endorsed by or connected to Nintendo or Ravensburger. Wii, Mario Kart Wii, Nintendo WFC, tiptoi and Ravensburger belong to their owners.</p>
+    <p class="footer__legal">Not affiliated with, endorsed by or connected to Nintendo, Ravensburger, Raspberry Pi or Microsoft. Wii, Wii Chess, Super Smash Bros., Mario Kart Wii, Nintendo WFC, tiptoi, Ravensburger, Raspberry Pi and Windows belong to their owners.</p>
   </div>
 </footer>
-<script>window.WIIWAVE_API_BASE = "";</script>
-<script src="app.js"></script>
+<script>
+(function () {
+  var pill = document.getElementById('status-pill');
+  var pillText = document.getElementById('status-text');
+  var state = document.getElementById('srv-state');
+  var stateText = document.getElementById('srv-state-text');
+  var sub = document.getElementById('srv-sub');
+  var software = document.getElementById('srv-software');
+  var version = document.getElementById('srv-version');
+  var seasons = document.getElementById('srv-seasons');
+  var checked = document.getElementById('srv-checked');
+  if (!pill || !state) return;
+
+  var pending = null;
+
+  function paint(ok, detail) {
+    pill.classList.remove('ok', 'bad');
+    state.classList.remove('ok', 'bad');
+    pill.classList.add(ok ? 'ok' : 'bad');
+    state.classList.add(ok ? 'ok' : 'bad');
+    pillText.textContent = ok ? 'server online' : 'server unreachable';
+    stateText.textContent = ok ? 'online' : 'offline';
+    sub.textContent = detail;
+  }
+
+  function finish(xhr, started, okStatus) {
+    if (pending !== xhr) return;
+    pending = null;
+    var body = xhr.responseText || '';
+    var data = null;
+    if (okStatus && xhr.status === 200) {
+      var match = body.match(/Markdown Content:\s*(\{[\s\S]*\})\s*$/);
+      if (match) {
+        try { data = JSON.parse(match[1]); } catch (e) { data = null; }
+      }
+    }
+    var ok = !!(data && data.seasons);
+    if (ok) {
+      var count = Object.keys(data.seasons).length;
+      seasons.textContent = count + ' season' + (count === 1 ? '' : 's');
+      software.textContent = 'WiiWave WFC';
+      version.textContent = 'seasons manifest v' + (data.version != null ? data.version : '?');
+      paint(true, 'answered in ' + (Date.now() - started) + ' ms');
+    } else {
+      seasons.textContent = 'unavailable';
+      version.textContent = 'manifest unavailable';
+      paint(false, 'the status check could not read the manifest');
+    }
+    checked.textContent = new Date().toLocaleTimeString();
+  }
+
+  function check() {
+    if (pending) return;
+    var xhr = new XMLHttpRequest();
+    var started = Date.now();
+    pending = xhr;
+    xhr.open('GET', 'https://r.jina.ai/http://158.180.55.245/seasons/manifest.json?t=' + started, true);
+    xhr.timeout = 15000;
+    xhr.onload = function () { finish(xhr, started, true); };
+    xhr.onerror = function () { finish(xhr, started, false); };
+    xhr.ontimeout = function () { finish(xhr, started, false); };
+    xhr.send();
+  }
+
+  document.getElementById('check-now').addEventListener('click', check);
+  check();
+  setInterval(function () { if (!document.hidden) check(); }, 60000);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) check(); });
+})();
+</script>
 </body>
 </html>
