@@ -34,13 +34,15 @@
     <div class="rail"><b>01</b>Wii</div>
     <div>
       <h2>Shroombrew</h2>
-      <p>A replacement Wii Shop Channel for homebrew. The catalog is the Open Shop Channel's 300 apps, bought with Wii Points that you make yourself on a website, and set up to install from the shop like any channel. It runs in eleven languages.</p>
+      <p>Shroombrew is a fan-made revival of the Wii Shop Channel. The patched channel talks to Shroombrew's own server instead of Nintendo's, so a real Wii can browse the catalog and install titles again. The catalog has official WiiWare and Virtual Console games, homebrew and Flash games. Wii Points cards are made on the site, and there are community pages for friend codes, gifts and points history.</p>
       <dl class="spec-list">
         <div><dt>Built with</dt><dd>Go, PostgreSQL, a C forwarder for devkitPPC</dd></div>
-        <div><dt>Status</dt><dd>Running. Installing apps as channels is in testing and has not been run on a console yet.</dd></div>
-        <div><dt>Source</dt><dd><a href="https://github.com/Markthegamer108/wii-shroombrew-channel">Markthegamer108/wii-shroombrew-channel</a></dd></div>
+        <div><dt>Status</dt><dd>Live. Built for the original Wii; vWii on Wii U is untested.</dd></div>
+        <div><dt>Server status</dt><dd><a class="status-pill" id="shroombrew-status" href="https://shroombrew.org/status.html" aria-live="polite"><i></i><span id="shroombrew-status-text">checking</span></a><span class="status-meta" id="shroombrew-status-meta"></span></dd></div>
+        <div><dt>Preview</dt><dd><a href="https://shop.shroombrew.org/">shop.shroombrew.org</a> — a preview of the new shop frontend</dd></div>
+        <div><dt>Source</dt><dd><a href="https://github.com/Markthegamer108/shroombrew">Markthegamer108/shroombrew</a></dd></div>
       </dl>
-      <div class="acts"><a class="btn btn--solid" href="/shroombrew-info/">Read about it</a><a class="btn" href="https://github.com/Markthegamer108/wii-shroombrew-channel">Source</a></div>
+      <div class="acts"><a class="btn btn--solid" href="/shroombrew-info/">Read about it</a><a class="btn" href="https://github.com/Markthegamer108/shroombrew">Source</a></div>
     </div>
   </section>
 
@@ -83,7 +85,7 @@
         <div class="footer__col"><h3>Projects</h3>
           <a href="/shroombrew-info/">Shroombrew</a><a href="/wiiwave/">WiiWave</a><a href="/ravage/">RAVage</a></div>
         <div class="footer__col"><h3>Source</h3>
-          <a href="https://github.com/Markthegamer108/wii-shroombrew-channel">Shroombrew</a>
+          <a href="https://github.com/Markthegamer108/shroombrew">Shroombrew</a>
           <a href="https://github.com/Markthegamer108/RAVage">RAVage</a>
           <a href="https://github.com/Markthegamer108">All repositories</a></div>
       </div>
@@ -91,5 +93,43 @@
     <p class="footer__legal">Not affiliated with, endorsed by or connected to Nintendo or Ravensburger. Wii, Mario Kart Wii, Nintendo WFC, tiptoi and Ravensburger belong to their owners.</p>
   </div>
 </footer>
+<script>
+(function () {
+  var pill = document.getElementById('shroombrew-status');
+  var text = document.getElementById('shroombrew-status-text');
+  var meta = document.getElementById('shroombrew-status-meta');
+  if (!pill || !text || !meta) return;
+
+  var pending = null;
+
+  function paint(ok, ms) {
+    pill.classList.remove('ok', 'bad');
+    pill.classList.add(ok ? 'ok' : 'bad');
+    text.textContent = ok ? 'online' : 'offline';
+    meta.textContent = ok
+      ? ms + ' ms · checked ' + new Date().toLocaleTimeString()
+      : 'last checked ' + new Date().toLocaleTimeString();
+  }
+
+  function check() {
+    if (pending) pending.abort();
+    var xhr = new XMLHttpRequest();
+    var started = Date.now();
+    pending = xhr;
+    xhr.open('GET', 'https://shop.shroombrew.org/healthz?t=' + started, true);
+    xhr.timeout = 8000;
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState !== 4 || pending !== xhr) return;
+      pending = null;
+      paint(xhr.status === 200 && xhr.responseText.trim() === 'ok', Date.now() - started);
+    };
+    xhr.send();
+  }
+
+  check();
+  setInterval(function () { if (!document.hidden) check(); }, 10000);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) check(); });
+})();
+</script>
 </body>
 </html>

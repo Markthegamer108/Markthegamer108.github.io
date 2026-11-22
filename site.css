@@ -337,6 +337,9 @@ select{
 .status-pill i{width:6px;height:6px;border-radius:50%;background:var(--muted-2);display:block}
 .status-pill.ok{color:#7ee787}.status-pill.ok i{background:#7ee787;box-shadow:0 0 6px #7ee787}
 .status-pill.bad{color:#ff7b72}.status-pill.bad i{background:#ff7b72}
+a.status-pill{text-decoration:none}
+a.status-pill:hover{color:var(--text)}
+.status-meta{margin-left:10px;font-family:var(--mono);font-size:11px;color:var(--muted-2)}
 .stamp{font-family:var(--mono);font-size:11px;color:var(--muted-2)}
 .tabs{display:inline-flex;border:1px solid var(--line);border-radius:3px;overflow:hidden}
 .tab{font:inherit;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;background:transparent;color:var(--muted-2);border:0;cursor:pointer}
