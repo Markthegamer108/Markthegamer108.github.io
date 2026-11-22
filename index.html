@@ -119,6 +119,8 @@
         <div><dt>License</dt><dd>MIT</dd></div>
         <div><dt>Source</dt><dd>Private for now</dd></div>
       </dl>
+      <div class="acts"><button class="btn" type="button" id="raspberrysoft-read" aria-controls="raspberrysoft-read-note" aria-expanded="false">Read about it</button></div>
+      <p class="read-note" id="raspberrysoft-read-note" hidden>Nothing to see here! check back later!</p>
     </div>
   </section>
 
@@ -250,7 +252,7 @@
 </script>
 <script>
 (function () {
-  var ids = ['wiiwave', 'internet-channel-tls', 'photo-channel-2'];
+  var ids = ['wiiwave', 'internet-channel-tls', 'photo-channel-2', 'raspberrysoft'];
   ids.forEach(function (id) {
     var read = document.getElementById(id + '-read');
     var note = document.getElementById(id + '-read-note');
