@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Markthegamer108: Shroombrew, WiiWave, RAVage, RaspberrySoft, Nexarch, Internet Channel TLS and Photo Channel 2.0</title>
+<title>Markthegamer108: Shroombrew, WiiWave, RAVage, RaspberrySoft, Nexarch, Wii Internet Channel with TLS and Photo Channel 2.0</title>
 <meta name="description" content="Seven hobby projects: a Wii Shop revival, a Nintendo WFC revival, a tiptoi audio converter, Windows drivers for the Raspberry Pi 5, a chess engine, a modern-TLS Wii Internet Channel, and a patched Wii Photo Channel.">
 <meta name="theme-color" content="#0a0a0b">
 <meta name="color-scheme" content="dark">
@@ -126,7 +126,7 @@
     <div class="rail"><b>05</b>Chess</div>
     <div>
       <h2>Nexarch</h2>
-      <p>Nexarch is a chess engine built from scratch. It's alpha-beta with an NNUE evaluation, magic bitboards and the usual search tricks, trained by self-play and graded by the top engines. The goal is to beat Stockfish 19. It's not there yet, but Gen 3 is +300 Elo over Gen 2 and Gen 4 is training now.</p>
+      <p>Nexarch is a chess engine built from scratch. It's alpha-beta with an NNUE evaluation, magic bitboards and the usual search tricks, trained by self-play and graded by a panel of 32 engines. The goal is to beat Stockfish 19. It's not there yet, but Gen 3 is +300 Elo over Gen 2 and Gen 4 is training now.</p>
       <div class="repo-meta" data-repo="nexarch">
         <span class="repo-vis pub">Public</span>
         <span><i class="lang" style="--lang:#3572a5"></i>Python</span>
@@ -138,7 +138,8 @@
       <dl class="spec-list">
         <div><dt>Built with</dt><dd>C++20, Python, NNUE</dd></div>
         <div><dt>Status</dt><dd>In development. Gen 3 is the current network; Gen 4 is training.</dd></div>
-        <div><dt>License</dt><dd>MIT, except one grading helper which is GPL-3.0</dd></div>
+        <div><dt>License</dt><dd>MIT for the engine. The one grading helper that loads Lc0 is GPL-3.0, and the 32 grading engines run as separate programs with their own licenses.</dd></div>
+        <div><dt>Credits</dt><dd>32 grading engines, Leela Chess Zero, the Lichess evaluation database, and many tools and libraries. See CREDITS.md.</dd></div>
         <div><dt>Source</dt><dd><a href="https://github.com/Markthegamer108/nexarch">Markthegamer108/nexarch</a></dd></div>
       </dl>
       <div class="acts"><a class="btn btn--solid" href="https://github.com/Markthegamer108/nexarch">Open on GitHub</a><a class="btn" href="https://github.com/Markthegamer108/nexarch#readme">Read the README</a></div>
@@ -148,7 +149,7 @@
   <section class="wrap sec" id="internet-channel-tls">
     <div class="rail"><b>06</b>Internet</div>
     <div>
-      <h2>Internet Channel TLS</h2>
+      <h2>Wii Internet Channel with TLS</h2>
       <p>Wii Internet Channel with its real Opera 9.30 engine patched to speak modern HTTPS. TLS 1.2/1.3 with verified certificates are handled in-engine, with no proxy or server in the final design, and a QuickJS bridge renders modern JavaScript. Work in progress: HTTPS with a real CA bundle and TLS 1.3 verified in Dolphin, QuickJS rendering modern pages. Real-console testing is still pending.</p>
       <div class="repo-meta" data-repo="internet-channel-tls">
         <span class="repo-vis priv">Private</span>
@@ -190,11 +191,11 @@
     <div class="footer__in">
       <div class="footer__brand">
         <a class="brand" href="/"><span class="brand__mark">M</span> Markthegamer108</a>
-        <p>Shroombrew, WiiWave, RAVage, RaspberrySoft, Nexarch, Internet Channel TLS and Photo Channel 2.0. Independent hobby projects.</p>
+        <p>Shroombrew, WiiWave, RAVage, RaspberrySoft, Nexarch, Wii Internet Channel with TLS and Photo Channel 2.0. Independent hobby projects.</p>
       </div>
       <div class="footer__cols">
         <div class="footer__col"><h3>Projects</h3>
-          <a href="/shroombrew-info/">Shroombrew</a><a href="/wiiwave/">WiiWave</a><a href="/ravage/">RAVage</a><a href="/#raspberrysoft">RaspberrySoft</a><a href="/#nexarch">Nexarch</a><a href="/#internet-channel-tls">Internet Channel TLS</a><a href="/#photo-channel-2">Photo Channel 2.0</a></div>
+          <a href="/shroombrew-info/">Shroombrew</a><a href="/wiiwave/">WiiWave</a><a href="/ravage/">RAVage</a><a href="/#raspberrysoft">RaspberrySoft</a><a href="/#nexarch">Nexarch</a><a href="/#internet-channel-tls">Wii Internet Channel with TLS</a><a href="/#photo-channel-2">Photo Channel 2.0</a></div>
         <div class="footer__col"><h3>Source</h3>
           <a href="https://github.com/Markthegamer108/shroombrew">Shroombrew</a>
           <a href="https://github.com/Markthegamer108/RAVage">RAVage</a>
