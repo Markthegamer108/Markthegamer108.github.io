@@ -163,6 +163,8 @@
         <div><dt>Version</dt><dd>No tagged release yet; <code>main</code> is the current build (22 Nov 2026).</dd></div>
         <div><dt>Source</dt><dd>Private for now</dd></div>
       </dl>
+      <div class="acts"><button class="btn" type="button" id="internet-channel-tls-read" aria-controls="internet-channel-tls-read-note" aria-expanded="false">Read about it</button></div>
+      <p class="read-note" id="internet-channel-tls-read-note" hidden>Nothing to see here! check back later!</p>
     </div>
   </section>
 
@@ -183,6 +185,8 @@
         <div><dt>Version</dt><dd>No tagged release yet; <code>main</code> is the current build (22 Nov 2026).</dd></div>
         <div><dt>Source</dt><dd>Private for now</dd></div>
       </dl>
+      <div class="acts"><button class="btn" type="button" id="photo-channel-2-read" aria-controls="photo-channel-2-read-note" aria-expanded="false">Read about it</button></div>
+      <p class="read-note" id="photo-channel-2-read-note" hidden>Nothing to see here! check back later!</p>
     </div>
   </section>
 </main>
@@ -246,13 +250,16 @@
 </script>
 <script>
 (function () {
-  var read = document.getElementById('wiiwave-read');
-  var note = document.getElementById('wiiwave-read-note');
-  if (!read || !note) return;
-  read.addEventListener('click', function () {
-    var open = note.hidden;
-    note.hidden = !open;
-    read.setAttribute('aria-expanded', String(open));
+  var ids = ['wiiwave', 'internet-channel-tls', 'photo-channel-2'];
+  ids.forEach(function (id) {
+    var read = document.getElementById(id + '-read');
+    var note = document.getElementById(id + '-read-note');
+    if (!read || !note) return;
+    read.addEventListener('click', function () {
+      var open = note.hidden;
+      note.hidden = !open;
+      read.setAttribute('aria-expanded', String(open));
+    });
   });
 })();
 </script>
